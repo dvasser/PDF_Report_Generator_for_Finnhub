@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 from FinnhubConnector import FinnhubConnector
 import pandas as pd
 from fpdf import FPDF
@@ -17,10 +11,6 @@ import seaborn
 #Estabilsh our FinnhubConnector object and use a style best for formatting in MatPlotLib
 connector = FinnhubConnector(api_key = 'YOUR_API_KEY')
 plt.style.use('seaborn')
-
-
-# In[6]:
-
 
 #Main function to generate the PDF report with a few helper functions within:
 def generate_PDF_report(stocks, start_date, end_date, dpi):
@@ -735,10 +725,7 @@ def generate_PDF_report(stocks, start_date, end_date, dpi):
     delete_images(stocks) #After everything is finished we can clear the current directory of all the png files
     print('')
     print('Finished: ' + datetime.now().strftime('%H:%M:%S'))
-
-
-# In[3]:
-
+    
 
 '''Make sure the stocks are in a list format when passing into the function. Here are a few examples:
 stocks = ['MU', 'XOM', 'TSM', 'CVX', 'SCHW', 'BABA', 'SQ', 'BA', 'INTC', 'AAPL', 'NVDA', 'V', 'NFLX', 'PYPL', 'CSCO', 'MA', 'ORCL', 'ABBV', 'AP', 'AIR', 'SAVE']
@@ -762,42 +749,9 @@ in this case simply re-running the code is often sufficient to fix it.
 Below is an example of running the code: Establish the variables first then pass into the function. It will save the
 PDF report into your current directory.'''
 
-
-# In[4]:
-
-
 stocks = ['NFLX', 'META', 'AAPL', 'AMZN']
 start_date = '2019-12-31'
 end_date = '2023-04-10'
-dpi = 100
-
-
-# In[7]:
-
+dpi = 300
 
 generate_PDF_report(stocks, start_date, end_date, dpi)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[18]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
