@@ -1,4 +1,4 @@
-from FinnhubConnector import FinnhubConnector
+from finnhub_connector import FinnhubConnector
 import pandas as pd
 from fpdf import FPDF
 import matplotlib.pyplot as plt
@@ -9,11 +9,12 @@ import os
 import seaborn
 
 #Estabilsh our FinnhubConnector object and use a style best for formatting in MatPlotLib
-connector = FinnhubConnector(api_key = 'YOUR_API_KEY')
+api_key = input('Paste your Finnhub API key: ')
+connector = FinnhubConnector(api_key = api_key)
 plt.style.use('seaborn')
 
 #Main function to generate the PDF report with a few helper functions within:
-def generate_PDF_report(stocks, start_date, end_date, dpi):
+def generate_PDF_report(stocks, start_date, end_date, dpi, name):
 
     #The function below makes API calls for 'close' values of candlesticks within the given date range,
     #plots them using matplotlib and saves as .png images to our current directory to later be output
@@ -721,7 +722,7 @@ def generate_PDF_report(stocks, start_date, end_date, dpi):
     generate_metric_charts(stocks, start_date, end_date, dpi)
     load_metric_charts()
 
-    pdf.output('Stocks_Performance_Report.pdf', 'F')
+    pdf.output(f'{name}.pdf', 'F')
     delete_images(stocks) #After everything is finished we can clear the current directory of all the png files
     print('')
     print('Finished: ' + datetime.now().strftime('%H:%M:%S'))
@@ -749,9 +750,12 @@ in this case simply re-running the code is often sufficient to fix it.
 Below is an example of running the code: Establish the variables first then pass into the function. It will save the
 PDF report into your current directory.'''
 
-stocks = ['NFLX', 'META', 'AAPL', 'AMZN']
-start_date = '2019-12-31'
-end_date = '2023-04-10'
-dpi = 300
 
-generate_PDF_report(stocks, start_date, end_date, dpi)
+stocks = input('Enter a list of stocks separated by commas: ')
+stocks = stocks.replace(' ','').split(',')
+start_date = input('Enter the start date for stock data (yyyy-mm-dd): ')
+end_date = input('Enter the end date for stock data (yyyy-mm-dd): ')
+dpi = input('Enter the DPI (quality of the PNG images when uploading to PDF - I recommend to test with 100 first): ')
+name = input('Enter the name of your PDF report: ')
+
+generate_PDF_report(stocks, start_date, end_date, dpi, name)
