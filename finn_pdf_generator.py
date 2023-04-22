@@ -11,7 +11,7 @@ import seaborn
 #Estabilsh our FinnhubConnector object and use a style best for formatting in MatPlotLib
 api_key = input('Paste your Finnhub API key: ')
 connector = FinnhubConnector(api_key = api_key)
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8')
 
 #Main function to generate the PDF report with a few helper functions within:
 def generate_PDF_report(stocks, start_date, end_date, dpi, name):
@@ -753,9 +753,11 @@ PDF report into your current directory.'''
 
 stocks = input('Enter a list of stocks separated by commas: ')
 stocks = stocks.replace(' ','').split(',')
+print('For high quality reports I recommend to enter dates that are at least 6 months apart')
 start_date = input('Enter the start date for stock data (yyyy-mm-dd): ')
 end_date = input('Enter the end date for stock data (yyyy-mm-dd): ')
 dpi = input('Enter the DPI (quality of the PNG images when uploading to PDF - I recommend to test with 100 first): ')
+dpi = int(dpi)
 name = input('Enter the name of your PDF report: ')
 
 generate_PDF_report(stocks, start_date, end_date, dpi, name)
