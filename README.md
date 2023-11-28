@@ -1,6 +1,6 @@
 ## Instructions how to use PDF_Report_Generator_for_Finnhub:
 
-1) Get a free API key from Finnhub. Refer to my other repository https://github.com/dvasser/Finnhub-API-Connector for more details.
+1) Get a free API key from Finnhub. Refer to the Finnhub Connector in this portfolio for more details.
 2) Clone this repository, open an IDE and navigate to the directory with the files.
 3) ```pip install -r requirements.txt```
 4) You are now ready to generate the report! Simply run the finn_pdf_generator.py file in the command line or by pressing 'run'. You will be prompted to input your Finnhub API key, a list of stocks separated by commas (could just enter one stock), start and end dates (I recommend for them to be at least 6 months apart), the DPI (100 is a good value to see how the report looks like, 300 generates a high quality report but takes a while. 500 is super sharp, and could take hours).
